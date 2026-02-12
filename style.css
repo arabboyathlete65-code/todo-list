@@ -1,0 +1,357 @@
+:root {
+    --bg: #f4f4f4;
+    --card: white;
+    --text: #333;
+    --border: #ddd;
+    --primary: #28a745;
+    --danger: #dc3545;
+    --completed: #6c757d;
+    --low-priority: #ffc107;
+    --medium-priority: #fd7e14;
+    --high-priority: #dc3545;
+    --overdue: #dc3545;
+}
+
+body.dark {
+    --bg: #121212;
+    --card: #1e1e1e;
+    --text: #e0e0e0;
+    --border: #333;
+    --completed: #888;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--card);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+#themeToggle {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.input-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#taskInput {
+    flex: 2;
+    min-width: 200px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+}
+
+#categorySelect, #prioritySelect, #dueDate, #reminderTime, #repeatSelect {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+}
+
+#addTaskBtn {
+    padding: 0 18px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.search-sort-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+#sortSelect {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+#exportBtn {
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.stats-section {
+    margin-bottom: 20px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stats-overall, .stats-detailed {
+    flex: 1;
+    min-width: 250px;
+}
+
+.progress-bar {
+    background: #e9ecef;
+    border-radius: 4px;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+#progressFill {
+    background: var(--primary);
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s;
+}
+
+canvas {
+    max-width: 100%;
+    background: var(--card);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stats-section h3 {
+    margin: 10px 0 5px;
+    font-size: 1.1rem;
+}
+
+#statsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#statsTable th, #statsTable td {
+    padding: 8px;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+#showWeekly, #showMonthly {
+    margin-right: 10px;
+}
+
+.calendar-section {
+    margin-bottom: 20px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.calendar-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.calendar-tab {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    background: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.calendar-tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+#calendarTableContainer {
+    overflow-x: auto;
+}
+
+#calendarTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#calendarTable th, #calendarTable td {
+    border: 1px solid var(--border);
+    padding: 8px;
+    text-align: center;
+    min-width: 50px;
+}
+
+#calendarTable th {
+    background: var(--primary);
+    color: white;
+}
+
+#calendarTable .habit-name {
+    text-align: left;
+    font-weight: bold;
+    min-width: 150px;
+}
+
+#calendarTable td.cursor-pointer {
+    cursor: pointer;
+}
+
+#calendarTable .completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+#calendarTable .missed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+#calendarTable .future {
+    background: #fff3cd;
+    color: #856404;
+    opacity: 0.7;
+}
+
+.calendar-stats {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.filter-btn, #toggleCompleted {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    background: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.task-item.low-priority {
+    border-left: 4px solid var(--low-priority);
+}
+
+.task-item.medium-priority {
+    border-left: 4px solid var(--medium-priority);
+}
+
+.task-item.high-priority {
+    border-left: 4px solid var(--high-priority);
+}
+
+.task-item.overdue {
+    background: rgba(var(--overdue), 0.1);
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--completed);
+    opacity: 0.8;
+}
+
+.task-text {
+    flex: 1;
+    word-break: break-word;
+}
+
+.task-date, .task-info {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.edit-btn { color: #007bff; }
+.delete-btn { color: var(--danger); }
+
+.hidden { display: none !important; }
